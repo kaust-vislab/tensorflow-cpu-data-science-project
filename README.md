@@ -1,6 +1,6 @@
-# python-data-science-project
+# tensorflow-cpu-data-science-project
 
-Repository containing scaffolding for a Python 3-based data science project. 
+Repository containing scaffolding for a Python 3-based data science project using on the [TensorFlow](https://www.tensorflow.org/) ecosystem. 
 
 ## Creating a new project from this template
 
@@ -53,7 +53,7 @@ $ conda env update --prefix ./env --file environment.yml --prune
 
 ### Listing the full contents of the Conda environment
 
-$nvironment run the following command.
+The list of explicit dependencies for the project are listed in the `environment.yml` file. Too see the full lost of packages installed into the environment run the following command.
 
 ```bash
 conda list --prefix ./env
@@ -61,8 +61,8 @@ conda list --prefix ./env
 
 ## Using Docker
 
-In order to build Docker images for your project and run containers you will need to install 
-[Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and 
+In order to build Docker images for your project and run containers with GPU acceleration you will 
+need to install [Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and  
 [Docker Compose](https://docs.docker.com/compose/install/).
 
 Detailed instructions for using Docker to build and image and launch containers can be found in 
