@@ -61,7 +61,7 @@ conda list --prefix ./env
 
 ## Using Docker
 
-In order to build Docker images for your project and run containers with GPU acceleration you will 
+In order to build Docker images for your project and run containers you will 
 need to install [Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and  
 [Docker Compose](https://docs.docker.com/compose/install/).
 
