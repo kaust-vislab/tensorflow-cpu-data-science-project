@@ -24,8 +24,8 @@ RUN adduser --disabled-password \
     $USER
 
 # Dockerhub not yet supporting COPY --chown $UID:$GID syntax
-COPY environment.yml /usr/tmp/environment.yml
-RUN chown $UID:$GID /usr/tmp/environment.yml
+COPY environment.yml /tmp/environment.yml
+RUN chown $UID:$GID /tmp/environment.yml
 
 COPY docker/entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chown $UID:$GID /usr/local/bin/docker-entrypoint.sh && \
@@ -37,7 +37,7 @@ RUN mkdir $HOME/app
 WORKDIR $HOME/app
 
 # build the specified conda environment from a file
-RUN conda env create --prefix ./env --file /usr/tmp/environment.yml && \
+RUN conda env create --prefix ./env --file /tmp/environment.yml && \
     conda clean --all --force-pkgs-dir --yes && \
     conda init bash
 
