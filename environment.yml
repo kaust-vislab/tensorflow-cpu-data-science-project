@@ -11,7 +11,7 @@ dependencies:
   - google-pasta=0.1
   - grpcio=1.16
   - h5py=2.9
-  - jupyterlab=1.0
+  - jupyterlab=1.1
   - keras-applications=1.0
   - keras-preprocessing=1.1
   - markdown=3.1
