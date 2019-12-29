@@ -9,5 +9,5 @@ dependencies:
   - openmpi=4.0
   - pip=19.3
   - pip:
-    - tf-nightly
+    - tensorflow==2.0
   - python=3.7
