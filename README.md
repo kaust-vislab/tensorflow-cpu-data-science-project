@@ -21,46 +21,55 @@ Project organization is based on ideas from [_Good Enough Practices for Scientif
 9. Put project source code in the `src` directory.
 10. Name all files to reflect their content or function.
 
-## Building the Conda environment
+## Using Conda
+
+### Creating the Conda environment
 
 After adding any necessary dependencies that should be downloaded via `conda` to the `environment.yml` file 
 and any dependencies that should be downloaded via `pip` to the `requirements.txt` file you create the 
 Conda environment in a sub-directory `./env`of your project directory by running the following commands.
 
 ```bash
-$ export ENV_PREFIX=$PWD/env
-$ conda env create --prefix $ENV_PREFIX --file environment.yml --force
-$ conda activate $ENV_PREFIX
-(/path/to/env)$ pip install --requirement requirements.txt # insures horovod built with compiler inside ./env    
+$ conda env create --prefix ./env --file environment.yml
 ```
 
-For convenience these commands have been wrapped in a `bash` script which can be sourced as follows.
+Once the new environment has been created you can activate the environment with the following 
+command.
 
+```bash
+$ conda activate ./env
+(/path/to/env) $
 ```
-$ . bin/create-conda-environment.sh
-```
-  
+
 Note that the `./env` directory is *not* under version control as it can always be re-created from 
 the `./bin/create-conda-environment.sh` file as necessary.
 
-## Verifying the Conda environment
+### Updating the Conda environment
+
+If you add (remove) dependencies to (from) the `environment.yml` file after the environment has 
+already been created, then you can update the environment with the following command.
+
+```bash
+$ conda env update --prefix ./env --file environment.yml --prune
+```
+
+### Verifying the Conda environment
 
 After building the Conda environment you can check that Horovod has been built with support for 
 TensorFlow and MPI with the following command.
 
-```
-$ conda activate $ENV_PREFIX # optional if environment already active
+```bash
+$ conda activate ./env # optional if environment already active
 (/path/to/env) $ horovodrun --check-build
 ```
 
-## Updating the Conda environment
+### Listing the full contents of the Conda environment
 
-If you add (remove) dependencies to (from) either the `environment.yml` file or the `requirements.txt` file 
-after the environment has already been created, then you can update the environment with the following commands.
+The list of explicit dependencies for the project are listed in the `environment.yml` file. To see 
+the full lost of packages installed into the environment run the following command.
 
 ```bash
-$ conda activate base # insures that $ENV_PREFIX environment is not active!
-$ . bin/create-conda-environment.sh
+conda list --prefix ./env
 ```
 
 ## Using Docker
